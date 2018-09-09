@@ -2,6 +2,25 @@ type: rest-api-app
 
 components:
 
+
+    citiesDb:
+        type: aws-dynamodb
+        inputs:
+            region: us-east-1
+            tables:
+                - name: cities
+                  hashKey: id
+                  indexes:
+                    - name: CityIdIndex
+                      type: global
+                      hashKey: id
+                  schema:
+                    id: number
+                    lat: number
+                    lon: number
+                  options:
+                    timestamps: true
+
     getCityCenter:
         type: aws-lambda
         inputs:
@@ -16,6 +35,20 @@ components:
             timeout: 10
             handler: handler.getCityArea
 
+    addCity:
+        type: aws-lambda
+        inputs:
+            memory: 512
+            timeout: 10
+            handler: handler.addCity
+
+    getCities:
+        type: aws-lambda
+        inputs:
+            memory: 512
+            timeout: 10
+            handler: handler.getCities
+
     geoApi:
         type: rest-api
         inputs:
@@ -29,4 +62,12 @@ components:
                     /area:
                         post:
                             function: ${getCityArea}
+                            cors: true
+                /draw:
+                    /add:
+                        post:
+                            function: ${addCity}
+                            cors: true
+                        get:
+                            function: ${getCities}
                             cors: true

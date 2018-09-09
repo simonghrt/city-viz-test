@@ -1,4 +1,6 @@
 const rp = require('request-promise');
+const AWS = require('aws-sdk')
+const dynamo = new AWS.DynamoDB.DocumentClient({ region: 'us-east-1' })
 
 // Options for geometry : contour or centre
 function buildUrl(params, geometry) {
@@ -79,6 +81,68 @@ function getCityArea(evt, ctx, cb) {
     })
     .catch((err) => {
         cb(err);
+    });
+}
+
+function addCity(evt, ctx, cb) {
+    const item = JSON.parse(evt.body);
+    let urlRequestCentre = buildUrl(item, "centre");
+
+    let options = {
+        uri: urlRequestCentre,
+        json: true
+    };
+
+    rp(options)
+    .then((geometries) => {
+        if (geometries["features"] && geometries["features"]["geometry"] && geometries["features"]["geometry"]) {
+            let id = '_' + Math.random().toString(36).substr(2, 9); // Random id
+            let newCity = {
+                "lat": geometries["features"]["geometry"]["coordinates"][1],
+                "lon": geometries["features"]["geometry"]["coordinates"][0],
+                "id": id
+            };
+            dynamo.put({
+                Item: newCity,
+                TableName: "cities"
+            }, (err, resp) => {
+                if (err) {
+                    cb(err);
+                } else {
+                    cb(null, {
+                        statusCode: 201,
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Access-Control-Allow-Origin': '*'
+                        },
+                        body: JSON.stringify(resp)
+                    });
+                }
+            });
+        }
+    })
+    .catch((err) => {
+        cb(err);
+    });
+}
+
+function getCities(evt, ctx, cb) {
+    dynamo.scan({
+        TableName: tableName
+    }, (err, data) => {
+        if (err) {
+            cb(err);
+        } else {
+            const cities = data.Items;
+            cb(null, {
+                statusCode: 200,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: JSON.stringify(cities)
+            });
+        }
     });
 }
 
