@@ -46,6 +46,9 @@ components deploy
 
 * Improve design
 * Make it more responsive
+* Add a clear map button
+* Create a service that will deal with the http requests
+* Separate the inputs component into smaller components (too big file)
 
 ### Idea
 

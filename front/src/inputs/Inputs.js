@@ -14,9 +14,19 @@ function FieldGroup({ id, label, help, ...props }) {
   );
 }
 
+/**
+ * Class that deals with the user inputs and gets the geometries
+ * @extends Component
+ */
 class Inputs extends Component {
+
+    /**
+    * Create a Inputs component
+    */
     constructor() {
         super();
+
+        // Initialization of the state
         this.state = {
             lat: "",
             lon: "",
@@ -29,6 +39,10 @@ class Inputs extends Component {
         this.handleSubmitCoords = this.handleSubmitCoords.bind(this);
     }
 
+    /**
+    * Handles the inputs changes
+    * @param {object} event - The event that was triggered
+    */
     handleInputChange(event) {
       const target = event.target;
       const value = target.value;
@@ -39,6 +53,10 @@ class Inputs extends Component {
       });
     }
 
+    /**
+    * Handles the submit with a name input
+    * @param {object} event - The event that was triggered
+    */
     handleSubmitName(event) {
         let uriReq = "";
         if (this.state.type === "area") {
@@ -70,6 +88,10 @@ class Inputs extends Component {
         });
     }
 
+    /**
+    * Handles the submit with latitude and longitude inputs
+    * @param {object} event - The event that was triggered
+    */
     handleSubmitCoords(event) {
         let uriReq = "";
         if (this.state.type === "area") {
@@ -102,6 +124,9 @@ class Inputs extends Component {
         });
     }
 
+    /**
+    * Renders the map
+    */
     render() {
         return (
             <div id="inputs">

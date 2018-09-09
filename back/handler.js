@@ -1,6 +1,11 @@
 const rp = require('request-promise');
 
-// Options for geometry : contour or centre
+/**
+ * Builds the url for the city data
+ * @param {object} params - The different input params
+ * @param {string} geometry - The type of geometry used (center or area available)
+ * @return {string} - The built url that will be used after for the request
+ */
 function buildUrl(params, geometry) {
     let urlGeoApi = "https://geo.api.gouv.fr/communes";
 
@@ -10,6 +15,7 @@ function buildUrl(params, geometry) {
         "geometry=" + geometry
     ];
 
+    // We verify what are the inputs in order to correctly build the url
     if (params.hasOwnProperty('name')) {
         options.push("nom=" + params["name"]);
     } else if (params.hasOwnProperty('lat') && params.hasOwnProperty('lon')) {
@@ -30,6 +36,12 @@ function buildUrl(params, geometry) {
     return urlGeoApi;
 }
 
+/**
+ * Gets the city center
+ * @param {object} evt - The event that contains the different parameters
+ * @param {object} ctx - Not sure
+ * @param {object} cb - Callback
+ */
 function getCityCenter(evt, ctx, cb) {
 
     const item = JSON.parse(evt.body);
@@ -40,6 +52,7 @@ function getCityCenter(evt, ctx, cb) {
         json: true
     };
 
+    // We make the get request to the third party API
     rp(options)
     .then((geometries) => {
         cb(null, {
@@ -56,6 +69,12 @@ function getCityCenter(evt, ctx, cb) {
     });
 }
 
+/**
+ * Gets the city area
+ * @param {object} evt - The event that contains the different parameters
+ * @param {object} ctx - Not sure
+ * @param {object} cb - Callback
+ */
 function getCityArea(evt, ctx, cb) {
 
     const item = JSON.parse(evt.body);
@@ -66,6 +85,7 @@ function getCityArea(evt, ctx, cb) {
         json: true
     };
 
+    // We make the get request to the third party API
     rp(options)
     .then((geometries) => {
         cb(null, {
