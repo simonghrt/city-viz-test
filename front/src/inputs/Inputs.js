@@ -26,6 +26,8 @@ class Inputs extends Component {
     constructor() {
         super();
 
+        this.API_URL = "https://p4rc7y2o01.execute-api.us-east-1.amazonaws.com/dev/";
+
         // Initialization of the state
         this.state = {
             lat: "",
@@ -60,9 +62,9 @@ class Inputs extends Component {
     handleSubmitName(event) {
         let uriReq = "";
         if (this.state.type === "area") {
-            uriReq = "https://p4rc7y2o01.execute-api.us-east-1.amazonaws.com/dev/city/area";
+            uriReq = this.API_URL + "city/area";
         } else {
-            uriReq = "https://p4rc7y2o01.execute-api.us-east-1.amazonaws.com/dev/city/centre";
+            uriReq = this.API_URL + "city/centre";
         }
 
         let options = {
@@ -95,9 +97,9 @@ class Inputs extends Component {
     handleSubmitCoords(event) {
         let uriReq = "";
         if (this.state.type === "area") {
-            uriReq = "https://p4rc7y2o01.execute-api.us-east-1.amazonaws.com/dev/city/area";
+            uriReq = this.API_URL + "city/area";
         } else {
-            uriReq = "https://p4rc7y2o01.execute-api.us-east-1.amazonaws.com/dev/city/centre";
+            uriReq = this.API_URL + "city/centre";
         }
 
         let options = {

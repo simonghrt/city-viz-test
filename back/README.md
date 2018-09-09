@@ -66,3 +66,7 @@ components remove
 ```
 
 ### Todos
+
+* Write tests
+* Use DynamoDB to store the different inputs
+* Add authentication

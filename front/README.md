@@ -12,6 +12,9 @@ npm install
 
 ### Start
 
+You need to update the API url with the one that was provided when you deployed your back components. (it is a todo to use an environment variable)
+Open the src/inputs/Inputs.js file and change the API_URL value with the one that you got
+
 ```
 npm start
 ```
@@ -49,6 +52,8 @@ components deploy
 * Add a clear map button
 * Create a service that will deal with the http requests
 * Separate the inputs component into smaller components (too big file)
+* Use an environment varialble for the API_URL
+* Write tests
 
 ### Idea
 

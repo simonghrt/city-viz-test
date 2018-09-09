@@ -13,3 +13,11 @@ The front part display a map created with Leaflet and has an interface to commun
 * Given a longitude/latitude, sends the closest city and the area of the city (using [this](https://api.gouv.fr/api/api-geo.html))
 * Drawing mode : post longitude/latitude or name of a city, store it in a DynamoDB database and display a polygon with the different cities stored
 * Drawing mode : choose an already created geometry map
+
+### Instructions
+
+You must follow the back instructions in the README and then the instructions in the front
+
+### Screenshot
+
+![alt text](intermediate_screenshot.png)
