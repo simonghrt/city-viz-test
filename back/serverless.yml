@@ -1,0 +1,32 @@
+type: rest-api-app
+
+components:
+
+    getCityCenter:
+        type: aws-lambda
+        inputs:
+            memory: 512
+            timeout: 10
+            handler: handler.getCityCenter
+
+    getCityArea:
+        type: aws-lambda
+        inputs:
+            memory: 512
+            timeout: 10
+            handler: handler.getCityArea
+
+    geoApi:
+        type: rest-api
+        inputs:
+            gateway: aws-apigateway
+            routes:
+                /city:
+                    /centre:
+                        post:
+                            function: ${getCityCenter}
+                            cors: true
+                    /area:
+                        post:
+                            function: ${getCityArea}
+                            cors: true
