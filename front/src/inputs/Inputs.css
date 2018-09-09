@@ -1,18 +1,27 @@
 #inputs {
-    background-color: #FFF3;
+    background-color: #FFFF;
     text-align: center;
     position: absolute;
     width: 20%;
-    top: 30%;
+    top: 10%;
     left: 30px;
     z-index: 4;
     padding: 15px;
+    height: 80%;
 }
 
 @media (max-width: 700px) {
     #inputs {
         width: 35%;
     }
+}
+
+#inputs-content {
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* @media (min-width: 1000px) {

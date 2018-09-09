@@ -14,8 +14,6 @@ class App extends Component {
 
     geometryUpdate(geo) {
         this.setState({geometry: geo});
-        console.log("App update");
-        console.log(this.state.geometry);
     }
 
     render() {
