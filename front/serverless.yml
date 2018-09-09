@@ -1,0 +1,14 @@
+type: landing-page
+
+components:
+  mapNetlifySite:
+    type: netlify-site
+    inputs:
+      netlifyApiToken: <Enter your Netlify Token here>
+      githubApiToken: <Enter your Github Token here>
+      siteRepo: https://github.com/simonghrt/city-viz-test
+      siteBuildCommand: cd front && npm install && npm run build
+      siteBuildDirectory: front/build
+      siteRepoBranch: master
+      siteRepoAllowedBranches:
+          - master
