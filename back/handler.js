@@ -1,16 +1,23 @@
 const rp = require('request-promise');
 
 // Options for geometry : contour or centre
-function buildUrl(lat, lon, geometry) {
+function buildUrl(params, geometry) {
     let urlGeoApi = "https://geo.api.gouv.fr/communes";
 
     let options = [
         "fields=nom,code,codesPostaux,codeDepartement,codeRegion,population",
         "format=geojson",
-        "geometry=" + geometry,
-        "lat=" + lat,
-        "lon=" + lon
+        "geometry=" + geometry
     ];
+
+    if (params.hasOwnProperty('name')) {
+        options.push("nom=" + params["name"]);
+    } else if (params.hasOwnProperty('lat') && params.hasOwnProperty('lon')) {
+        options.push("lat=" + params["lat"]);
+        options.push("lon=" + params["lon"]);
+    } else {
+        cb("Missing parameters in the url");
+    }
 
     options.forEach((option, index) => {
         if (index == 0) {
@@ -26,7 +33,7 @@ function buildUrl(lat, lon, geometry) {
 function getCityCenter(evt, ctx, cb) {
 
     const item = JSON.parse(evt.body);
-    let urlRequestCentre = buildUrl(item.lat, item.lon, "centre");
+    let urlRequestCentre = buildUrl(item, "centre");
 
     let options = {
         uri: urlRequestCentre,
@@ -52,7 +59,7 @@ function getCityCenter(evt, ctx, cb) {
 function getCityArea(evt, ctx, cb) {
 
     const item = JSON.parse(evt.body);
-    let urlRequestCentre = buildUrl(item.lat, item.lon, "contour");
+    let urlRequestCentre = buildUrl(item, "contour");
 
     let options = {
         uri: urlRequestCentre,
