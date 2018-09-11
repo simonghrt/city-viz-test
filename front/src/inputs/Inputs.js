@@ -26,7 +26,7 @@ class Inputs extends Component {
     constructor() {
         super();
 
-        this.API_URL = "https://p4rc7y2o01.execute-api.us-east-1.amazonaws.com/dev/";
+        this.API_URL = "https://u7nhp75j86.execute-api.us-east-1.amazonaws.com/dev/";
 
         // Initialization of the state
         this.state = {

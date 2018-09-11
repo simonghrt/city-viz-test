@@ -65,8 +65,19 @@ curl --request POST \
 components remove
 ```
 
+### Test
+
+You need to update the API url with the one that was provided when you deployed your back components. (it is a todo to use an environment variable)
+Open the test.js file and change the API_URL value with the one that you got
+
+Once it's done, run :
+``` bash
+npm run test
+```
+
 ### Todos
 
 * Write tests
 * Use DynamoDB to store the different inputs
 * Add authentication
+* Send 200 status code instead of 201
