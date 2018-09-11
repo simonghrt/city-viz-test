@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import './Map.css';
 import L from 'leaflet';
 
+L.Map.include({
+  'clearLayers': function () {
+    this.eachLayer(function (layer) {
+      if (layer.hasOwnProperty('feature')) {
+          this.removeLayer(layer);
+      }
+    }, this);
+  }
+});
+
 /**
  * Class that displays a leaflet map
  * @extends Component
@@ -45,9 +55,7 @@ class Map extends Component {
     }
 
     clearMap() {
-        this.state.map.eachLayer(function (layer) {
-            this.state.map.removeLayer(layer);
-        });
+        this.state.map.clearLayers();
     }
 
     /**

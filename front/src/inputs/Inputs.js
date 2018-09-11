@@ -171,6 +171,7 @@ class Inputs extends Component {
                                   </FormControl>
                                 </FormGroup>
                                 <Button onClick={this.handleSubmitCoords}>Visualiser</Button>
+                                <Button onClick={this.handleClear}>Vider</Button>
                             </form>
                         </Tab>
                         <Tab eventKey={2} title="Nom">
