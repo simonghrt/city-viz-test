@@ -7,6 +7,8 @@ let should = chai.should();
 chai.use(require("chai-as-promised"));
 chai.use(require("chai-http"));
 
+let handler = require("./handler");
+
 const API_URL = "https://u7nhp75j86.execute-api.us-east-1.amazonaws.com/dev";
 
 
@@ -142,4 +144,36 @@ describe("Test back-end", () => {
         });
       });
   });
+
+  describe("Build url function", () => {
+      it("should correctly build the url with name and center", (done) => {
+          let url = handler.buildUrl({ name: "Amiens" }, "centre");
+          url.should.be.equal("https://geo.api.gouv.fr/communes?fields=nom,code,codesPostaux,codeDepartement,codeRegion,population&format=geojson&geometry=centre&nom=Amiens");
+          done();
+      });
+
+      it("should correctly build the url with lat/lon and center", (done) => {
+          let url = handler.buildUrl({ lat: "49", lon: "2" }, "centre");
+          url.should.be.equal("https://geo.api.gouv.fr/communes?fields=nom,code,codesPostaux,codeDepartement,codeRegion,population&format=geojson&geometry=centre&lat=49&lon=2");
+          done();
+      });
+
+      it("should correctly build the url with name and area", (done) => {
+          let url = handler.buildUrl({ name: "Amiens" }, "contour");
+          url.should.be.equal("https://geo.api.gouv.fr/communes?fields=nom,code,codesPostaux,codeDepartement,codeRegion,population&format=geojson&geometry=contour&nom=Amiens");
+          done();
+      });
+
+      it("should correctly build the url with lat/lon and area", (done) => {
+          let url = handler.buildUrl({ lat: "49", lon: "2" }, "contour");
+          url.should.be.equal("https://geo.api.gouv.fr/communes?fields=nom,code,codesPostaux,codeDepartement,codeRegion,population&format=geojson&geometry=contour&lat=49&lon=2");
+          done();
+      });
+
+      it("should correctly build the url with lat/lon, name and centre", (done) => {
+          let url = handler.buildUrl({ name: "Amiens", lat: "49", lon: "2" }, "centre");
+          url.should.be.equal("https://geo.api.gouv.fr/communes?fields=nom,code,codesPostaux,codeDepartement,codeRegion,population&format=geojson&geometry=centre&nom=Amiens");
+          done();
+      });
+  })
 });

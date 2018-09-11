@@ -104,5 +104,6 @@ function getCityArea(evt, ctx, cb) {
 
 module.exports = {
     getCityCenter,
-    getCityArea
+    getCityArea,
+    buildUrl
 }

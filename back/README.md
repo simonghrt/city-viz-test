@@ -81,3 +81,5 @@ npm run test
 * Use DynamoDB to store the different inputs
 * Add authentication
 * Send 200 status code instead of 201
+* Have a better code structure (separate into several files)
+* Write tests on the API using directly the functions that are in the handler.js file
