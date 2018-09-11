@@ -39,6 +39,7 @@ class Inputs extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmitName = this.handleSubmitName.bind(this);
         this.handleSubmitCoords = this.handleSubmitCoords.bind(this);
+        this.handleClear = this.handleClear.bind(this);
     }
 
     /**
@@ -53,6 +54,10 @@ class Inputs extends Component {
       this.setState({
         [name]: value
       });
+    }
+
+    handleClear(event) {
+        this.props.onClearMap();
     }
 
     /**
@@ -190,6 +195,7 @@ class Inputs extends Component {
                                   </FormControl>
                                 </FormGroup>
                                 <Button onClick={this.handleSubmitName}>Visualiser</Button>
+                                <Button onClick={this.handleClear}>Vider</Button>
                             </form>
                         </Tab>
                     </Tabs>

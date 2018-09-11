@@ -17,6 +17,7 @@ class Map extends Component {
         this.state = {
             map: {}
         };
+        this.clearMap = this.clearMap.bind(this);
     }
 
     /**
@@ -41,6 +42,12 @@ class Map extends Component {
         if (Object.keys(this.props.geometry).length > 0) {
             L.geoJSON(this.props.geometry).addTo(this.state.map);
         }
+    }
+
+    clearMap() {
+        this.state.map.eachLayer(function (layer) {
+            this.state.map.removeLayer(layer);
+        });
     }
 
     /**
