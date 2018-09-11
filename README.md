@@ -2,8 +2,7 @@
 
 ### Project
 
-This project has been created for a job interview.
-It uses the data provided by the french government [here](https://api.gouv.fr/api/api-geo.html)
+This project uses the data provided by the french government [here](https://api.gouv.fr/api/api-geo.html)
 An API is available with several endpoints, multiple inputs are possible but it always send back geojson data.
 The front part display a map created with Leaflet and has an interface to communicate with the API.
 
