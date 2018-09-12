@@ -6,6 +6,7 @@ import Inputs from "./inputs/Inputs";
 class App extends Component {
     constructor () {
         super();
+        // this.map = {};
         this.state = {
             geometry: {}
         };
@@ -19,8 +20,8 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Map geometry={this.state.geometry} />
-                <Inputs onGeometryChange={this.geometryUpdate} />
+                <Map geometry={this.state.geometry} ref={ instance => { this.map = instance; }}/>
+                <Inputs onGeometryChange={this.geometryUpdate} onClearMap={() => {this.map.clearMap(); }}/>
             </div>
         );
     }
