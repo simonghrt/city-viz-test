@@ -56,6 +56,10 @@ class Inputs extends Component {
       });
     }
 
+    /**
+    * Handles the clear of the map
+    * @param {object} event - The event that was triggered
+    */
     handleClear(event) {
         this.props.onClearMap();
     }

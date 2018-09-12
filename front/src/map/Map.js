@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Map.css';
 import L from 'leaflet';
 
+// Function added to the map in order to clear all layers
 L.Map.include({
   'clearLayers': function () {
     this.eachLayer(function (layer) {
@@ -54,6 +55,9 @@ class Map extends Component {
         }
     }
 
+    /**
+    * Clears the map
+    */
     clearMap() {
         this.state.map.clearLayers();
     }

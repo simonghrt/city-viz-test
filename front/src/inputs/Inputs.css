@@ -25,16 +25,16 @@
 }
 
 #inputs-content h3 {
-  margin-bottom: 30px;
-  color: #555;
+    margin-bottom: 30px;
+    color: #555;
 }
 
 #inputs-content p {
-  margin: 20px 0;
+    margin: 20px 0;
 }
 
 @media (max-width: 540px) {
-  #inputs p {
-    display: none;
-  }
+    #inputs p {
+        display: none;
+    }
 }

@@ -6,7 +6,6 @@ import Inputs from "./inputs/Inputs";
 class App extends Component {
     constructor () {
         super();
-        // this.map = {};
         this.state = {
             geometry: {}
         };
