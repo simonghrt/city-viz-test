@@ -19,4 +19,4 @@ You must follow the back instructions in the README and then the instructions in
 
 ### Screenshot
 
-![alt text](intermediate_screenshot.png)
+![alt text](screenshot.png)

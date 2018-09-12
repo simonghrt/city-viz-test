@@ -38,7 +38,7 @@ With this request example, we get the center of any city in France giving a lati
 
 ```
 curl --request POST \
-  --url https://p4rc7y2o01.execute-api.us-east-1.amazonaws.com/dev/city/centre \
+  --url https://u7nhp75j86.execute-api.us-east-1.amazonaws.com/dev/city/centre \
   --header 'content-type: application/json' \
   --data '{
       "lat": "49.895",
@@ -50,11 +50,33 @@ With this request example, we get the area of any city in France giving a latitu
 
 ```
 curl --request POST \
-  --url https://p4rc7y2o01.execute-api.us-east-1.amazonaws.com/dev/city/area \
+  --url https://u7nhp75j86.execute-api.us-east-1.amazonaws.com/dev/city/area \
   --header 'content-type: application/json' \
   --data '{
       "lat": "49.895",
       "lon": "2.3022"
+    }'
+```
+
+With this request example, we get the center of any city in France giving the name of this city
+
+```
+curl --request POST \
+  --url https://u7nhp75j86.execute-api.us-east-1.amazonaws.com/dev/city/centre \
+  --header 'content-type: application/json' \
+  --data '{
+      "name": "Amiens"
+    }'
+```
+
+With this request example, we get the area of any city in France giving the name of this city
+
+```
+curl --request POST \
+  --url https://u7nhp75j86.execute-api.us-east-1.amazonaws.com/dev/city/area \
+  --header 'content-type: application/json' \
+  --data '{
+      "name": "Amiens"
     }'
 ```
 

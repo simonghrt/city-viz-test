@@ -47,9 +47,6 @@ components deploy
 
 ### Todos
 
-* Improve design
-* Make it more responsive
-* Add a clear map button
 * Create a service that will deal with the http requests
 * Separate the inputs component into smaller components (too big file)
 * Use an environment varialble for the API_URL
