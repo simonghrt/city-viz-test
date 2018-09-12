@@ -34,6 +34,8 @@ components deploy
 
 ### API Examples
 
+Normally it would be better to make a GET request as we don't create any new data but I didn't found any documentation about how to use multiple parameters in a GET request with the api-gateway serverless component.
+
 With this request example, we get the center of any city in France giving a latitude or longitude of this city
 
 ```
